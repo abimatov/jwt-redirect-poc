@@ -20,7 +20,7 @@ app.get('/book', (req, res) => {
   });
 
   // Redirect to the external site with the JWT as a query parameter
-  res.redirect(`https://smartflyer.travelwits.com`);
+  res.redirect(`https://agentdemo.travelwits.com`);
 });
 
 // Serve React frontend
