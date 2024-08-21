@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+function Home({ onLogin }) {
+  return (
+    <div>
+      <h1>Login</h1>
+      <button onClick={onLogin}>Login</button>
+    </div>
+  );
+}
+
 function Book() {
   const handleBookTravel = () => {
-    // Navigate to /book route which will trigger the JWT generation and redirect
     window.location.href = '/book';
   };
 
@@ -14,3 +22,22 @@ function Book() {
     </div>
   );
 }
+
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={!isLoggedIn ? <Home onLogin={handleLogin} /> : <Book />} />
+      </Routes>
+    </Router>
+  );
+}
+
+// This line is crucial for default export
+export default App;
